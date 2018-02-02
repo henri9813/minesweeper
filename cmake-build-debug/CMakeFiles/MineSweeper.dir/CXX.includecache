@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/henri/CLionProjects/MineSweeper/Case.cpp
+Case.h
+C:/Users/henri/CLionProjects/MineSweeper/Case.h
+
+C:/Users/henri/CLionProjects/MineSweeper/Case.h
+
+C:/Users/henri/CLionProjects/MineSweeper/Plateau.cpp
+Plateau.h
+C:/Users/henri/CLionProjects/MineSweeper/Plateau.h
+stdlib.h
+-
+time.h
+-
+iostream
+-
+
+C:/Users/henri/CLionProjects/MineSweeper/Plateau.h
+Case.h
+C:/Users/henri/CLionProjects/MineSweeper/Case.h
+vector
+-
+
+C:/Users/henri/CLionProjects/MineSweeper/main.cpp
+iostream
+-
+Plateau.h
+C:/Users/henri/CLionProjects/MineSweeper/Plateau.h
+
