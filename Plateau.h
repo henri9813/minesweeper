@@ -13,7 +13,8 @@ class Plateau {
         Plateau(int largeur, int hauteur, int nombremine);
         ~Plateau();
         void showPlateau();
-        void getCase(int x,int y, bool parsing = false);
+        bool getCase(int x,int y, bool parsing = false);
+        int getUnknownNumber();
     private:
         int largeur;
         int hauteur;

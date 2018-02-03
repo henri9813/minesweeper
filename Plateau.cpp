@@ -77,18 +77,18 @@ void Plateau::showPlateau()
     }
 }
 
-void Plateau::getCase(int x, int y, bool parsing) {
+bool Plateau::getCase(int x, int y, bool parsing) {
     if(this->tableau[y][x].getStatus() != 0)
     {
         std::cout << "[Demineur] Case déjà découverte ! :-)" << std::endl;
-        return;
+        return false;
     }
     if(!this->tableau[y][x].getType()) //CA NE VA PAS FAIRE BOOM !!!!!
         this->tableau[y][x].setStatus(2); //TKT Morray :-) #systèmePower
     else
     {
         this->tableau[y][x].setStatus(1);
-        return;
+        return true;
     } //boom;
     int minecompteur = 0;
     /**
@@ -111,7 +111,7 @@ void Plateau::getCase(int x, int y, bool parsing) {
     if(y < this->hauteur-1)
         if(this->tableau[y+1][x].getType() == 1)
             minecompteur++;
-    if(x < this->largeur)
+    if(x < this->largeur-1)
     {
         if(y-1 >= 0)
             if(this->tableau[y-1][x+1].getType() == 1)
@@ -122,11 +122,14 @@ void Plateau::getCase(int x, int y, bool parsing) {
             if(this->tableau[y+1][x+1].getType() == 1)
                 minecompteur++;
     }
+    /*
+     * Si il y a des mines adjacentes alors on arrête la fonction.
+     */
     if(minecompteur > 0)
     {
         this->tableau[y][x].setStatus(3);
         this->tableau[y][x].setAffichageValeur(minecompteur);
-        return;
+        return false;
     }
 
     if(x > 0)
@@ -145,5 +148,21 @@ void Plateau::getCase(int x, int y, bool parsing) {
     if(y < this->hauteur-1)
         if(this->tableau[y+1][x].getStatus() == 0)
             this->getCase(x, y+1, true);
+    return false;
+}
 
+
+
+int Plateau::getUnknownNumber()
+{
+    int unknow = 0;
+    for(int i = 0; i < this->hauteur; i++)
+    {
+        for(int j = 0; j < this->largeur; j++)
+        {
+            if(this->tableau[j][i].getStatus() == 0)
+                unknow++;
+        }
+    }
+    return unknow;
 }
